@@ -2,11 +2,11 @@ import 'package:dyarimu/login_register/login.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
-  runApp(myApp());
+  runApp(MyApp());
 }
 
-class myApp extends StatelessWidget {
-  const myApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
