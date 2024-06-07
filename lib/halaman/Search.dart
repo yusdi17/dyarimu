@@ -15,7 +15,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Search DyariMu"),
+        title: Text("Search"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
