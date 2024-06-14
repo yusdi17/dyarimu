@@ -39,7 +39,7 @@ class _HalamanProfileState extends State<HalamanProfile> {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           Text(
-            'yusidahyuk@gmail.com',
+            'Yosihayukk@gmail.com',
             style: TextStyle(fontSize: 16, color: Colors.grey),
           ),
           SizedBox(height: 10),
