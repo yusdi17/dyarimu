@@ -1,12 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:dyarimu/profile/chngepswd.dart';
 import 'package:dyarimu/profile/editprofile.dart';
-import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: HalamanProfile(),
     );
   }
 }
@@ -85,9 +86,8 @@ class _HalamanProfileState extends State<HalamanProfile> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                ElevatedButton.icon(
-                  icon: Icon(Icons.edit, color: Colors.black),
-                  label: Text(
+                ElevatedButton(
+                  child: Text(
                     'Edit Profile',
                     style: TextStyle(color: Colors.black),
                   ),
@@ -97,16 +97,16 @@ class _HalamanProfileState extends State<HalamanProfile> {
                   ),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EditProfile(),
-                        ));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditProfile(),
+                      ),
+                    );
                   },
                 ),
                 SizedBox(height: 10),
-                ElevatedButton.icon(
-                  icon: Icon(Icons.lock, color: Colors.black),
-                  label: Text(
+                ElevatedButton(
+                  child: Text(
                     'Change Password',
                     style: TextStyle(color: Colors.black),
                   ),
@@ -116,16 +116,16 @@ class _HalamanProfileState extends State<HalamanProfile> {
                   ),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChangePassword(),
-                        )); //fungsi disini
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangePassword(),
+                      ),
+                    );
                   },
                 ),
                 SizedBox(height: 10),
-                ElevatedButton.icon(
-                  icon: Icon(Icons.logout, color: Colors.black),
-                  label: Text(
+                ElevatedButton(
+                  child: Text(
                     'Sign Out',
                     style: TextStyle(color: Colors.black),
                   ),
@@ -144,4 +144,8 @@ class _HalamanProfileState extends State<HalamanProfile> {
       ),
     );
   }
+}
+
+void main() {
+  runApp(MyApp());
 }
