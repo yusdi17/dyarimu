@@ -28,7 +28,7 @@ class _EditProfileState extends State<EditProfile> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Handle back button press
+            // fungsi disini
           },
         ),
       ),
@@ -42,7 +42,7 @@ class _EditProfileState extends State<EditProfile> {
               child: IconButton(
                 icon: Icon(Icons.camera_alt, size: 40),
                 onPressed: () {
-                  //fungsi disini
+                  // fungsi disini
                 },
               ),
             ),
@@ -76,7 +76,7 @@ class _EditProfileState extends State<EditProfile> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    //fungsi disini
+                    // fungsi disini
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.lightBlue,
@@ -85,7 +85,7 @@ class _EditProfileState extends State<EditProfile> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    //fungsi disini
+                    //  fungsi disini
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.lightBlue,
