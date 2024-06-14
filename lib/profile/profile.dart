@@ -122,10 +122,7 @@ class _HalamanProfileState extends State<HalamanProfile> {
                     minimumSize: Size(500, 45),
                   ),
                   onPressed: () {
-                    AlertDialog(
-                      title: Text('Signt out'),
-                      content: Text('Anda Yakin Untuk Sign Out'),
-                    ); //fungsi disini
+                    //fungsi disini
                   },
                 ),
               ],
