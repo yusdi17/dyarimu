@@ -18,9 +18,9 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   final String profilgambar =
       'https://img.freepik.com/free-photo/portrait-smiling-young-businesswoman-with-hand-her-hips-showing-thumb-up-sign_23-2148087341.jpg?t=st=1718274320~exp=1718277920~hmac=e8e96ea9e5746013f782e413164d9eb76938321c1048e4cbbfd86356aebc7ac2&w=740';
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _bioController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController bioController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class _EditProfileState extends State<EditProfile> {
             ),
             SizedBox(height: 20),
             TextField(
-              controller: _usernameController,
+              controller: usernameController,
               decoration: InputDecoration(
                 labelText: 'Username',
                 border: OutlineInputBorder(),
@@ -61,7 +61,7 @@ class _EditProfileState extends State<EditProfile> {
             ),
             SizedBox(height: 20),
             TextField(
-              controller: _emailController,
+              controller: emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
                 border: OutlineInputBorder(),
@@ -69,7 +69,7 @@ class _EditProfileState extends State<EditProfile> {
             ),
             SizedBox(height: 20),
             TextField(
-              controller: _bioController,
+              controller: bioController,
               decoration: InputDecoration(
                 labelText: 'Bio',
                 border: OutlineInputBorder(),
