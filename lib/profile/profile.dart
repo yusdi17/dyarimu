@@ -122,7 +122,10 @@ class _HalamanProfileState extends State<HalamanProfile> {
                     minimumSize: Size(500, 45),
                   ),
                   onPressed: () {
-                    //fungsi disini
+                    AlertDialog(
+                      title: Text('Signt out'),
+                      content: Text('Anda Yakin Untuk Sign Out'),
+                    ); //fungsi disini
                   },
                 ),
               ],
@@ -130,31 +133,37 @@ class _HalamanProfileState extends State<HalamanProfile> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Dyarimu',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_box_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'List',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+      bottomNavigationBar: BottomAppBar(
+        height: 58,
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          children: [
+            Expanded(
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.home),
+              ),
+            ),
+            Expanded(
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.search_rounded),
+              ),
+            ),
+            Expanded(
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.list_alt_rounded),
+              ),
+            ),
+            Expanded(
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.account_circle),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
