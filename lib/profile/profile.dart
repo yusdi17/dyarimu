@@ -145,7 +145,3 @@ class _HalamanProfileState extends State<HalamanProfile> {
     );
   }
 }
-
-void main() {
-  runApp(MyApp());
-}
