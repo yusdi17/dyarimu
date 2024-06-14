@@ -133,38 +133,6 @@ class _HalamanProfileState extends State<HalamanProfile> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        height: 58,
-        shape: CircularNotchedRectangle(),
-        child: Row(
-          children: [
-            Expanded(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.home),
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.search_rounded),
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.list_alt_rounded),
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.account_circle),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
