@@ -1,3 +1,5 @@
+import 'package:dyarimu/profile/chngepswd.dart';
+import 'package:dyarimu/profile/editprofile.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -93,7 +95,13 @@ class _HalamanProfileState extends State<HalamanProfile> {
                     backgroundColor: Colors.grey[300],
                     minimumSize: Size(500, 45),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditProfile(),
+                        ));
+                  },
                 ),
                 SizedBox(height: 10),
                 ElevatedButton.icon(
@@ -107,7 +115,11 @@ class _HalamanProfileState extends State<HalamanProfile> {
                     minimumSize: Size(500, 45),
                   ),
                   onPressed: () {
-                    //fungsi disini
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChangePassword(),
+                        )); //fungsi disini
                   },
                 ),
                 SizedBox(height: 10),

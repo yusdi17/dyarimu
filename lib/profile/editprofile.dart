@@ -1,3 +1,4 @@
+import 'package:dyarimu/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -28,7 +29,11 @@ class _EditProfileState extends State<EditProfile> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // fungsi disini
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HalamanProfile(),
+                )); // fungsi disini
           },
         ),
       ),
