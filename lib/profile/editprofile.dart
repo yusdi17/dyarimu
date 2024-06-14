@@ -1,4 +1,3 @@
-import 'package:dyarimu/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
