@@ -79,7 +79,7 @@ class _EditProfileState extends State<EditProfile> {
                     // fungsi disini
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightBlue,
+                    backgroundColor: Colors.grey,
                   ),
                   child: Text('Cancel'),
                 ),
@@ -88,7 +88,7 @@ class _EditProfileState extends State<EditProfile> {
                     //  fungsi disini
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightBlue,
+                    backgroundColor: Colors.grey,
                   ),
                   child: Text('Save'),
                 ),
