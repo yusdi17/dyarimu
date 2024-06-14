@@ -29,11 +29,7 @@ class _EditProfileState extends State<EditProfile> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HalamanProfile(),
-                )); // fungsi disini
+            // fungsi disini
           },
         ),
       ),
