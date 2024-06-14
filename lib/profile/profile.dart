@@ -122,48 +122,13 @@ class _HalamanProfileState extends State<HalamanProfile> {
                     minimumSize: Size(500, 45),
                   ),
                   onPressed: () {
-                    AlertDialog(
-                      title: Text('Signt out'),
-                      content: Text('Anda Yakin Untuk Sign Out'),
-                    ); //fungsi disini
+                    //fungsi disini
                   },
                 ),
               ],
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        height: 58,
-        shape: CircularNotchedRectangle(),
-        child: Row(
-          children: [
-            Expanded(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.home),
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.search_rounded),
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.list_alt_rounded),
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.account_circle),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
