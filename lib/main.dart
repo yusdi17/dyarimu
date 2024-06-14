@@ -1,5 +1,4 @@
 import 'package:dyarimu/login_register/login.dart';
-import 'package:dyarimu/profile/editprofile.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Editprofile(),
+      home: Login(),
     );
   }
 }
