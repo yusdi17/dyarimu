@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class AddPage extends StatefulWidget {
   const AddPage({super.key});
@@ -8,6 +10,43 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
+  final TextEditingController _diaryController = TextEditingController();
+  final TextEditingController _judulController = TextEditingController();
+
+  Future<void> createPost() async {
+    if (_diaryController.text.isEmpty || _judulController.text.isEmpty) {
+      // Tampilkan pesan kesalahan jika salah satu input kosong
+      return;
+    }
+
+    var uri = Uri.parse('https://932c-36-73-34-14.ngrok-free.app/userpost');
+    var response = await http.post(
+      uri,
+      body: {
+        'user_id': '1', // Atur user_id sesuai logika aplikasi Anda
+        'diary': _diaryController.text,
+        'judul': _judulController.text,
+      },
+    );
+
+    if (response.statusCode == 201) {
+      // Post berhasil dibuat
+      Navigator.of(context).pop();
+    } else {
+      // Tangani kesalahan
+      var responseData = response.body;
+
+      try {
+        var responseJson = jsonDecode(responseData);
+        // Tampilkan pesan kesalahan dari respons JSON
+        print(responseJson['message']);
+      } catch (e) {
+        // Tampilkan pesan kesalahan jika respons bukan JSON
+        print('Error: $responseData');
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +64,7 @@ class _AddPageState extends State<AddPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: createPost,
             icon: Icon(Icons.check),
             iconSize: 30,     
           ),
@@ -33,25 +72,26 @@ class _AddPageState extends State<AddPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Start typing your dyarimu..',
-                    border: InputBorder.none,
-                  ),
+        child: Column(
+          children: [
+            TextField(
+              controller: _judulController,
+              decoration: InputDecoration(
+                hintText: 'Judul',
+                border: InputBorder.none,
+              ),
+            ),
+            Expanded(
+              child: TextField(
+                controller: _diaryController,
+                decoration: InputDecoration(
+                  hintText: 'Mulai mengetik diarymu...',
+                  border: InputBorder.none,
                 ),
+                maxLines: null,
               ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.image),
-                iconSize: 30,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
