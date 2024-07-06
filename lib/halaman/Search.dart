@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -10,12 +13,30 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   final TextEditingController _controller = TextEditingController();
   String _searchText = '';
+  List<dynamic> _results = [];
+
+  Future<void> _searchUsers(String username) async {
+    final response = await http.get(Uri.parse('https://932c-36-73-34-14.ngrok-free.app/users/search?username=$username'));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> users = json.decode(response.body);
+      setState(() {
+        _results = users;
+      });
+    } else {
+      // Handle error
+      setState(() {
+        _results = [];
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Search"),
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -40,9 +61,7 @@ class _SearchState extends State<Search> {
                   IconButton(
                     icon: Icon(Icons.search),
                     onPressed: () {
-                      setState(() {
-                        _searchText = _controller.text;
-                      });
+                      _searchUsers(_controller.text);
                     },
                   ),
                 ],
@@ -50,7 +69,16 @@ class _SearchState extends State<Search> {
             ),
             const SizedBox(height: 16.0),
             Expanded(
-              child: Text(_searchText),
+              child: ListView.builder(
+                itemCount: _results.length,
+                itemBuilder: (context, index) {
+                  final user = _results[index];
+                  return ListTile(
+                    title: Text(user['username']),
+                    subtitle: Text(user['email']),
+                  );
+                },
+              ),
             ),
           ],
         ),
