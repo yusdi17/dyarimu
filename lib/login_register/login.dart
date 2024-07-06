@@ -1,4 +1,11 @@
+import 'dart:convert';
+
+import 'package:dyarimu/Navigation.dart';
+import 'package:dyarimu/halaman/forgotPassword.dart';
+import 'package:dyarimu/login_register/register.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:dyarimu/profile/buatProfile.dart'; 
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -8,6 +15,56 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  Future<void> loginUser() async {
+    var url = Uri.parse('https://932c-36-73-34-14.ngrok-free.app/login');
+    var response = await http.post(url, body: {
+      'username': usernameController.text,
+      'password': passwordController.text,
+    });
+
+    if (response.statusCode == 200) {
+
+      var responseData = jsonDecode(response.body);
+
+      bool hasProfile = responseData['has_profile'] ?? false;
+
+      if (hasProfile) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Navigation()), 
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => BuatProfile()), 
+        );
+      }
+
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Gagal Login'),
+            content: Text('Nama pengguna atau kata sandi tidak valid. Silakan coba lagi.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +86,7 @@ class _LoginState extends State<Login> {
               child: Column(
                 children: [
                   TextField(
+                    controller: usernameController,
                     decoration: InputDecoration(
                       hintText: "Username",
                       border: OutlineInputBorder(
@@ -39,6 +97,7 @@ class _LoginState extends State<Login> {
                     height: 30,
                   ),
                   TextField(
+                    controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Password",
@@ -52,7 +111,14 @@ class _LoginState extends State<Login> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgotPassword(),
+                          ),
+                        );
+                      },
                       child: Text("Forgot Password?"),
                     ),
                   ),
@@ -61,7 +127,9 @@ class _LoginState extends State<Login> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.amber),
-                      onPressed: () {},
+                      onPressed: () {
+                        loginUser();
+                      },
                       child: Text(
                         "Login",
                         style: TextStyle(fontSize: 20),
@@ -71,8 +139,15 @@ class _LoginState extends State<Login> {
                   Align(
                     alignment: Alignment.center,
                     child: TextButton(
-                      onPressed: () {},
-                      child: Text("Creat New Account"),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Register(),
+                          ),
+                        );
+                      },
+                      child: Text("Create New Account"),
                     ),
                   ),
                 ],
